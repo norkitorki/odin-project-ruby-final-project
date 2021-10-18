@@ -16,12 +16,12 @@ class ChessBoard
 
   def rows
     fields.reverse.map.with_index do |row, i|
-      "#{8 - i} ┃ #{row.join(' │ ')} ┃\n  "
+      "#{8 - i} ┃ #{row.join(' │ ')} ┃\n"
     end.join(row_seperator)
   end
 
   def row_seperator
-    '┠' << Array.new(8, '───').join('┼') << "┨\n"
+    '  ┠' << Array.new(8, '───').join('┼') << "┨\n"
   end
 
   def top
@@ -29,6 +29,6 @@ class ChessBoard
   end
 
   def bottom
-    "┗━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┛\n    A   B   C   D   E   F   G   H\n"
+    "  ┗━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┛\n    A   B   C   D   E   F   G   H\n"
   end
 end
