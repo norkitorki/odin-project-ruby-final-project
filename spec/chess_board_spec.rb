@@ -43,5 +43,17 @@ describe ChessBoard do
         expect(chess_board.fields[4][3]).to eq(symbol)
       end
     end
+
+    context 'when the field is not empty' do
+      before { chess_board.fields[6][5] = 'X' }
+
+      it 'should not place a symbol on the board' do
+        position = 'F7'
+        new_symbol = '🨁'
+        placed_symbol = chess_board.fields[6][5]
+        chess_board.place(position, new_symbol)
+        expect(chess_board.fields[6][5]).to eq(placed_symbol)
+      end
+    end
   end
 end
