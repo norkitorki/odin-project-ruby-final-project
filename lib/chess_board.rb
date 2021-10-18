@@ -12,6 +12,13 @@ class ChessBoard
     top << rows << bottom
   end
 
+  def place(position, symbol)
+    vec = vector(position)
+    return unless vec.all? { |index| index.between?(0, 7) }
+
+    fields[vec.first][vec.last] = symbol
+  end
+
   def vector(position)
     [position[1].to_i - 1, position[0].downcase.ord - 97]
   end
