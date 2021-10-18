@@ -55,5 +55,19 @@ describe ChessBoard do
         expect(chess_board.fields[6][5]).to eq(placed_symbol)
       end
     end
+
+    context 'when the position is invalid' do
+      it 'should not change the fields' do
+        position = 'B20'
+        symbol = '🩒'
+        expect { chess_board.place(position, symbol) }.not_to change { chess_board.fields }
+      end
+
+      it 'should not raise an exception' do
+        position = 'A-4'
+        symbol = '🩏'
+        expect { chess_board.place(position, symbol) }.not_to raise_exception
+      end
+    end
   end
 end
