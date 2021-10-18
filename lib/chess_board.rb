@@ -16,11 +16,16 @@ class ChessBoard
     vec = vector(position)
     return unless vec.all? { |index| index.between?(0, 7) }
 
-    fields[vec.first][vec.last] = symbol
+    fields[vec.first][vec.last] = symbol if field_empty?(position)
   end
 
   def vector(position)
     [position[1].to_i - 1, position[0].downcase.ord - 97]
+  end
+
+  def field_empty?(position)
+    vec = vector(position)
+    fields[vec.first][vec.last] == ' '
   end
 
   private
