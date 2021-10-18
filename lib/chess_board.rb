@@ -14,18 +14,22 @@ class ChessBoard
 
   def place(position, symbol)
     vec = vector(position)
-    return unless vec.all? { |index| index.between?(0, 7) }
+    return unless vec
 
     fields[vec.first][vec.last] = symbol if field_empty?(position)
   end
 
   def vector(position)
-    [position[1].to_i - 1, position[0].downcase.ord - 97]
+    [position[1].to_i - 1, position[0].downcase.ord - 97] if valid_position?(position)
   end
 
   def field_empty?(position)
     vec = vector(position)
     fields[vec.first][vec.last] == ' '
+  end
+
+  def valid_position?(position)
+    position[/^([a-hA-H])([1-8])$/] != nil
   end
 
   private
