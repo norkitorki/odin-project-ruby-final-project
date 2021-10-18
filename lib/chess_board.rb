@@ -12,6 +12,10 @@ class ChessBoard
     top << rows << bottom
   end
 
+  def vector(position)
+    [position[1].to_i - 1, position[0].downcase.ord - 97]
+  end
+
   private
 
   def rows
