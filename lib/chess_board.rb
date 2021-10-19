@@ -19,6 +19,13 @@ class ChessBoard
     fields[vec.first][vec.last] = symbol if field_empty?(coordinate)
   end
 
+  def at(coordinate)
+    return unless valid_coordinate?(coordinate)
+
+    vec = vector(coordinate)
+    fields[vec.first][vec.last]
+  end
+
   def field_empty?(coordinate)
     return unless valid_coordinate?(coordinate)
 
