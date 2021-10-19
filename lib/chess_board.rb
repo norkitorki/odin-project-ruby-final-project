@@ -12,20 +12,20 @@ class ChessBoard
     top << rows << bottom
   end
 
-  def place(position, symbol)
-    return unless valid_position?(position)
+  def place(coordinate, symbol)
+    return unless valid_coordinate?(coordinate)
 
-    vec = vector(position)
-    fields[vec.first][vec.last] = symbol if field_empty?(position)
+    vec = vector(coordinate)
+    fields[vec.first][vec.last] = symbol if field_empty?(coordinate)
   end
 
-  def field_empty?(position)
-    vec = vector(position)
+  def field_empty?(coordinate)
+    vec = vector(coordinate)
     fields[vec.first][vec.last] == ' '
   end
 
-  def valid_position?(position)
-    position.to_s[/^([a-hA-H])([1-8])$/] != nil
+  def valid_coordinate?(coordinate)
+    coordinate.to_s[/^([a-hA-H])([1-8])$/] != nil
   end
 
   private
