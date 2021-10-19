@@ -35,28 +35,30 @@ describe ChessBoard do
   end
 
   describe '#place' do
-    context 'when the field is empty' do
-      it 'should place a symbol on the board' do
-        position = 'D5'
-        symbol = '🨁'
-        chess_board.place(position, symbol)
-        expect(chess_board.fields[4][3]).to eq(symbol)
+    context 'when the coordinates are valid' do
+      context 'when the field is empty' do
+        it 'should place a symbol on the board' do
+          position = 'D5'
+          symbol = '🨁'
+          chess_board.place(position, symbol)
+          expect(chess_board.fields[4][3]).to eq(symbol)
+        end
+      end
+
+      context 'when the field is not empty' do
+        before { chess_board.fields[6][5] = 'X' }
+
+        it 'should not place a symbol on the board' do
+          position = 'F7'
+          new_symbol = '🨁'
+          placed_symbol = chess_board.fields[6][5]
+          chess_board.place(position, new_symbol)
+          expect(chess_board.fields[6][5]).to eq(placed_symbol)
+        end
       end
     end
 
-    context 'when the field is not empty' do
-      before { chess_board.fields[6][5] = 'X' }
-
-      it 'should not place a symbol on the board' do
-        position = 'F7'
-        new_symbol = '🨁'
-        placed_symbol = chess_board.fields[6][5]
-        chess_board.place(position, new_symbol)
-        expect(chess_board.fields[6][5]).to eq(placed_symbol)
-      end
-    end
-
-    context 'when the position is invalid' do
+    context 'when the coordinates are invalid' do
       it 'should not change the fields' do
         position = 'B20'
         symbol = '🩒'
@@ -67,6 +69,14 @@ describe ChessBoard do
         position = 'A-4'
         symbol = '🩏'
         expect { chess_board.place(position, symbol) }.not_to raise_exception
+      end
+    end
+
+    context 'when the symbol length is invalid' do
+      it 'should not change the fields' do
+        position = 'C1'
+        symbol = 'xYx'
+        expect { chess_board.place(position, symbol) }.not_to change { chess_board.fields }
       end
     end
   end
