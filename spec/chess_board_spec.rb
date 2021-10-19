@@ -110,6 +110,39 @@ describe ChessBoard do
     end
   end
 
+  describe '#at' do
+    context 'when the coordinates are valid' do
+      before do
+        coordinates = 'B6'
+        symbol = '🨂'
+        chess_board.place('B6', symbol)
+      end
+
+      context 'when the field is empty' do
+        it "should return ' '" do
+          coordinates = 'B4'
+          empty_field = ' '
+          expect(chess_board.at(coordinates)).to eq(empty_field)
+        end
+      end
+
+      context 'when the field is not empty' do
+        it 'should return the symbol placed at the field' do
+          coordinates = 'B6'
+          expected_symbol = '🨂'
+          expect(chess_board.at(coordinates)).to eq(expected_symbol)
+        end
+      end
+    end
+
+    context 'when the coordinates are out of range' do
+      it 'should return nil' do
+        coordinates = 'B500'
+        expect(chess_board.at(coordinates)).to be_nil
+      end
+    end
+  end
+
   describe '#field_empty?' do
     context 'when the field at the given coordinates is empty' do
       it 'should return true' do
