@@ -5,7 +5,7 @@ class ChessBoard
   attr_reader :fields
 
   def initialize
-    @fields = Array.new(8) { Array.new(8, ' ') }
+    clear
   end
 
   def to_s
@@ -24,6 +24,10 @@ class ChessBoard
 
     vec = vector(coordinate)
     fields[vec.first][vec.last]
+  end
+
+  def clear
+    @fields = Array.new(8) { Array.new(8, ' ') }
   end
 
   def field_empty?(coordinate)
