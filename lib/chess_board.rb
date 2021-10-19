@@ -25,7 +25,7 @@ class ChessBoard
   end
 
   def valid_position?(position)
-    position[/^([a-hA-H])([1-8])$/] != nil
+    position.to_s[/^([a-hA-H])([1-8])$/] != nil
   end
 
   private
