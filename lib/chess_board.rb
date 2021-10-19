@@ -13,14 +13,10 @@ class ChessBoard
   end
 
   def place(position, symbol)
+    return unless valid_position?(position)
+
     vec = vector(position)
-    return unless vec
-
     fields[vec.first][vec.last] = symbol if field_empty?(position)
-  end
-
-  def vector(position)
-    [position[1].to_i - 1, position[0].downcase.ord - 97] if valid_position?(position)
   end
 
   def field_empty?(position)
@@ -33,6 +29,10 @@ class ChessBoard
   end
 
   private
+
+  def vector(coordinate)
+    [coordinate[1].to_i - 1, coordinate[0].downcase.ord - 97]
+  end
 
   def rows
     fields.reverse.map.with_index do |row, i|
