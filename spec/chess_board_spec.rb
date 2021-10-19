@@ -109,4 +109,26 @@ describe ChessBoard do
       end
     end
   end
+
+  describe '#field_empty?' do
+    context 'when the field at the given coordinates is empty' do
+      it 'should return true' do
+        coordinates = 'D3'
+        expect(chess_board.field_empty?(coordinates)).to eq(true)
+      end
+    end
+
+    context 'when the field at the given coordinates is not empty' do
+      before do
+        coordinates = 'A5'
+        symbol = '🨾'
+        chess_board.place(coordinates, symbol)
+      end
+
+      it 'should return false' do
+        coordinates = 'A5'
+        expect(chess_board.field_empty?(coordinates)).to eq(false)
+      end
+    end
+  end
 end
