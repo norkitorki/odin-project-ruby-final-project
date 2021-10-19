@@ -143,6 +143,18 @@ describe ChessBoard do
     end
   end
 
+  describe '#clear' do
+    let(:pawn_row) { Array.new(8, '🨾') }
+
+    before { 8.times { |i| chess_board.fields[i] = pawn_row } }
+
+    it 'should clear the board' do
+      full_board = Array.new(8) { pawn_row }
+      clear_board = Array.new(8) { Array.new(8, ' ') }
+      expect { chess_board.clear }.to change { chess_board.fields }.from(full_board).to(clear_board)
+    end
+  end
+
   describe '#field_empty?' do
     context 'when the field at the given coordinates is empty' do
       it 'should return true' do
