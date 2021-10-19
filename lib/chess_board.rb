@@ -13,7 +13,7 @@ class ChessBoard
   end
 
   def place(coordinate, symbol)
-    return unless valid_coordinate?(coordinate)
+    return unless valid_coordinate?(coordinate) && symbol.to_s.length == 1
 
     vec = vector(coordinate)
     fields[vec.first][vec.last] = symbol if field_empty?(coordinate)
