@@ -131,4 +131,34 @@ describe ChessBoard do
       end
     end
   end
+
+  describe '#valid_coordinate?' do
+    context 'when the coordinates are valid' do
+      it 'should return true when coordinates are passed as a symbol' do
+        coordinates = :F8
+        expect(chess_board.valid_coordinate?(coordinates)).to eq(true)
+      end
+
+      it 'should return true when coordinates are passed as a string' do
+        coordinates = 'F4'
+        expect(chess_board.valid_coordinate?(coordinates)).to eq(true)
+      end
+    end
+
+    context 'when coordinates are invalid' do
+      context 'when coordinates are out of range' do
+        it 'should return false' do
+          coordinates = 'C14'
+          expect(chess_board.valid_coordinate?(coordinates)).to eq(false)
+        end
+      end
+
+      context 'when coordinates are of wrong object type' do
+        it 'should return false' do
+          array = ['A', 1]
+          expect(chess_board.valid_coordinate?(array)).to eq(false)
+        end
+      end
+    end
+  end
 end
