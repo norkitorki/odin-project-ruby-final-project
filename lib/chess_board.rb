@@ -27,10 +27,7 @@ class ChessBoard
   end
 
   def field_empty?(coordinate)
-    return unless valid_coordinate?(coordinate)
-
-    vec = vector(coordinate)
-    fields[vec.first][vec.last] == ' '
+    at(coordinate).to_s == ' '
   end
 
   def valid_coordinate?(coordinate)
