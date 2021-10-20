@@ -110,6 +110,64 @@ describe ChessBoard do
     end
   end
 
+  describe '#move' do
+    context 'when given a valid start and target coordinate' do
+      let(:start_coordinate) { 'H1' }
+      let(:target_coordinate) { 'H5' }
+      let(:symbol) { '🨂' }
+
+      context 'when a symbol is placed at the start coordinate' do
+        before do
+          chess_board.place(start_coordinate, symbol)
+          chess_board.move(start_coordinate, target_coordinate)
+        end
+
+        it 'should move the symbol to the target coordinate' do
+          expect(chess_board.fields[4][7]).to eq(symbol)
+        end
+
+        it 'should remove the symbol from the start coordinate' do
+          empty_field = ' '
+          expect(chess_board.fields[0][7]).to eq(empty_field)
+        end
+
+        context 'when a symbol is placed at the target coordinate' do
+          before do
+            target_symbol = '🨾'
+            chess_board.place(target_coordinate, target_symbol)
+          end
+
+          it 'should replace the symbol' do
+            expect(chess_board.fields[4][7]).to eq(symbol)
+          end
+        end
+      end
+
+      context 'when no symbol is placed at the start coordinate' do
+        it 'should do nothing' do
+          chess_board.place(target_coordinate, symbol)
+          expect { chess_board.move(start_coordinate, target_coordinate) }.not_to change { chess_board.fields }
+        end
+      end
+    end
+
+    context 'when the start coordinate is invalid' do
+      it 'should do nothing' do
+        start_coordinate = 'J2'
+        target_coordinate = 'H7'
+        expect { chess_board.move(start_coordinate, target_coordinate) }.not_to change { chess_board.fields }
+      end
+    end
+
+    context 'when the target coordinate is invalid' do
+      it 'should do nothing' do
+        start_coordinate = 'C3'
+        target_coordinate = 'Z9'
+        expect { chess_board.move(start_coordinate, target_coordinate) }.not_to change { chess_board.fields }
+      end
+    end
+  end
+
   describe '#at' do
     context 'when the coordinates are valid' do
       before do
