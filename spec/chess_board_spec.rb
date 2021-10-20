@@ -201,6 +201,20 @@ describe ChessBoard do
     end
   end
 
+  describe '#invert' do
+    let(:x_row) { x_row = Array.new(8, 'X') }
+    let(:y_row) { y_row = Array.new(8, 'Y') }
+
+    before do
+      chess_board.fields[0] = x_row
+      chess_board.fields[7] = y_row
+    end
+
+    it 'should invert the board' do
+      expect { chess_board.invert }.to change { chess_board.fields[0] }.from(x_row).to(y_row)
+    end
+  end
+
   describe '#clear' do
     let(:pawn_row) { Array.new(8, '🨾') }
 
