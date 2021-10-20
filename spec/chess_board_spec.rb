@@ -110,6 +110,25 @@ describe ChessBoard do
     end
   end
 
+  describe '#remove' do
+    context 'when a symbol is placed at the given coordinates' do
+      it 'should remove the symbol from the board' do
+        coordinates = 'C6'
+        symbol = '🩒'
+        empty_field = ' '
+        chess_board.place(coordinates, symbol)
+        expect { chess_board.remove(coordinates) }.to change { chess_board.fields[5][2] }.from(symbol).to(empty_field)
+      end
+    end
+
+    context 'when no symbol is placed at the given coordinates' do
+      it 'should not alter the fields' do
+        coordinates = 'D6'
+        expect { chess_board.remove(coordinates) }.not_to change { chess_board.fields }
+      end
+    end
+  end
+
   describe '#move' do
     context 'when given a valid start and target coordinate' do
       let(:start_coordinate) { 'H1' }
