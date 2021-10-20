@@ -36,6 +36,10 @@ class ChessBoard
     fields[vec.first][vec.last]
   end
 
+  def invert
+    @fields.reverse!
+  end
+
   def clear
     @fields = Array.new(8) { Array.new(8, ' ') }
   end
