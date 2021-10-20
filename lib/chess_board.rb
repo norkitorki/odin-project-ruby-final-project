@@ -19,6 +19,16 @@ class ChessBoard
     fields[vec.first][vec.last] = symbol if field_empty?(coordinate)
   end
 
+  def move(start, target)
+    return unless valid_coordinate?(start) && valid_coordinate?(target) && !field_empty?(start)
+
+    start_vec = vector(start)
+    target_vec = vector(target)
+
+    fields[target_vec.first][target_vec.last] = at(start)
+    fields[start_vec.first][start_vec.last] = ' '
+  end
+
   def at(coordinate)
     return unless valid_coordinate?(coordinate)
 
