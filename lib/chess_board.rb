@@ -19,6 +19,13 @@ class ChessBoard
     fields[vec.first][vec.last] = symbol if field_empty?(coordinate)
   end
 
+  def remove(coordinate)
+    return unless valid_coordinate?(coordinate)
+
+    vec = vector(coordinate)
+    fields[vec.first][vec.last] = ' '
+  end
+
   def move(start, target)
     return unless valid_coordinate?(start) && valid_coordinate?(target) && !field_empty?(start)
 
