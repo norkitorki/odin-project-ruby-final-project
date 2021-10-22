@@ -42,4 +42,20 @@ describe ChessPiece do
       end
     end
   end
+
+  describe '#valid_coordinate?' do
+    context 'when the coordinate is valid' do
+      it 'should return true' do
+        valid_coordinate = 'B2'
+        expect(chess_piece.valid_coordinate?(valid_coordinate)).to eq(true)
+      end
+    end
+
+    context 'when the coordinate is invalid' do
+      it 'should return false' do
+        invalid_coordinate = 'B-2'
+        expect(chess_piece.valid_coordinate?(invalid_coordinate)).to eq(false)
+      end
+    end
+  end
 end
