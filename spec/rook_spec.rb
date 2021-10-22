@@ -37,4 +37,29 @@ describe Rook do
       end
     end
   end
+
+  describe '#right_moves' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        array = []
+        expect(rook.right_moves).to eq(array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid moves to the right from coordinate B6' do
+        position = 'B6'
+        rook.position = position
+        moves = [['C6'], ['D6'], ['E6'], ['F6'], ['G6'], ['H6']]
+        expect(rook.right_moves).to eq(moves)
+      end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'H8'
+        rook.position = position
+        moves = []
+        expect(rook.right_moves).to eq(moves)
+      end
+    end
+  end
 end
