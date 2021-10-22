@@ -14,7 +14,7 @@ class ChessPiece
       @rank = coordinate[1]
       @position = coordinate
     else
-      puts 'Invalid coordinate'
+      puts "#{coordinate} is not a valid chess coordinate."
     end
   end
 
