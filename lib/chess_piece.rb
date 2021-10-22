@@ -21,4 +21,9 @@ class ChessPiece
   def valid_coordinate?(coordinate)
     coordinate.to_s[/^[a-hA-H][1-8]$/] != nil
   end
+
+  # to_vector('D4') => [3, 3]
+  def to_vector(coordinate)
+    [coordinate[1].to_i - 1, coordinate[0].downcase.ord - 97]
+  end
 end
