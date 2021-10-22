@@ -9,8 +9,8 @@ describe Rook do
   describe '#moveset' do
     context 'when position is nil' do
       it 'should return an empty array' do
-        array = []
-        expect(rook.moveset).to eq(array)
+        empty_array = []
+        expect(rook.moveset).to eq(empty_array)
       end
     end
 
@@ -41,8 +41,8 @@ describe Rook do
   describe '#right_moves' do
     context 'when position is nil' do
       it 'should return an empty array' do
-        array = []
-        expect(rook.right_moves).to eq(array)
+        empty_array = []
+        expect(rook.right_moves).to eq(empty_array)
       end
     end
 
@@ -66,8 +66,8 @@ describe Rook do
   describe '#down_moves' do
     context 'when position is nil' do
       it 'should return an empty array' do
-        array = []
-        expect(rook.down_moves).to eq(array)
+        empty_array = []
+        expect(rook.down_moves).to eq(empty_array)
       end
     end
 
@@ -91,8 +91,8 @@ describe Rook do
   describe '#left_moves' do
     context 'when position is nil' do
       it 'should return an empty array' do
-        array = []
-        expect(rook.left_moves).to eq(array)
+        empty_array = []
+        expect(rook.left_moves).to eq(empty_array)
       end
     end
 
