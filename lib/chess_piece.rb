@@ -26,4 +26,9 @@ class ChessPiece
   def to_vector(coordinate)
     [coordinate[1].to_i - 1, coordinate[0].downcase.ord - 97]
   end
+
+  # to_coordinate([3, 3]) => 'D4'
+  def to_coordinate(vector)
+    "#{('A'..'H').to_a[vector[0]]}#{vector[1] + 1}"
+  end
 end
