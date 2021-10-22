@@ -92,4 +92,54 @@ describe ChessPiece do
       end
     end
   end
+
+  describe '#valid_coordinate?' do
+    context 'when the coordinate is valid' do
+      it 'should return true when the coordinate is a string' do
+        valid_string = 'F4'
+        expect(chess_piece.valid_coordinate?(valid_string)).to eq(true)
+      end
+
+      it 'should return true when the coordinate is a symbol' do
+        valid_symbol = :F4
+        expect(chess_piece.valid_coordinate?(valid_symbol)).to eq(true)
+      end
+    end
+
+    context 'when the coordinate is invalid' do
+      context 'when the coordinate is not a valid chess coordinate' do
+        it 'should return false' do
+          invalid_coordinate = 'C12'
+          expect(chess_piece.valid_coordinate?(invalid_coordinate)).to eq(false)
+        end
+      end
+
+      context 'when the coordinate is of the wrong object type' do
+        it 'should return false when the coordinate is an array' do
+          array = ['D7']
+          expect(chess_piece.valid_coordinate?(array)).to eq(false)
+        end
+
+        it 'should return false when the coordinate is a hash' do
+          hash = { C: 8 }
+          expect(chess_piece.valid_coordinate?(hash)).to eq(false)
+        end
+
+        it 'should return false when the coordinate is an integer' do
+          integer = 24
+          expect(chess_piece.valid_coordinate?(integer)).to eq(false)
+        end
+
+        it 'should return false when the coordinate is a float' do
+          float = 5.3
+          expect(chess_piece.valid_coordinate?(float)).to eq(false)
+        end
+
+        it 'should return false when the coordinate is a range' do
+          range = (2..6)
+          expect(chess_piece.valid_coordinate?(range)).to eq(false)
+        end
+      end
+    end
+  end
 end
