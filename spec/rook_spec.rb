@@ -62,4 +62,29 @@ describe Rook do
       end
     end
   end
+
+  describe '#down_moves' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        array = []
+        expect(rook.down_moves).to eq(array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid moves down from coordinate G7' do
+        position = 'G7'
+        rook.position = position
+        moves = [['G6'], ['G5'], ['G4'], ['G3'], ['G2'], ['G1']]
+        expect(rook.down_moves).to eq(moves)
+      end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'E1'
+        rook.position = position
+        moves = []
+        expect(rook.down_moves).to eq(moves)
+      end
+    end
+  end
 end
