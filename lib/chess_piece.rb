@@ -33,4 +33,8 @@ class ChessPiece
   def valid_coordinate?(coordinate)
     coordinate.to_s[/^[a-hA-H][1-8]$/] != nil
   end
+
+  def valid_vector?(vector)
+    vector.length == 2 && vector[0].between?(0, 7) && vector[1].between?(0, 7)
+  end
 end
