@@ -3,7 +3,7 @@
 require_relative '../lib/rook.rb'
 
 describe Rook do
-  subject(:rook) { Rook.new(unicode_rook) }
+  subject(:rook) { described_class.new(unicode_rook) }
   let(:unicode_rook) { '♖' }
 
   describe '#moveset' do
