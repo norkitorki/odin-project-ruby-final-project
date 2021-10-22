@@ -17,4 +17,8 @@ class ChessPiece
       puts 'Invalid coordinate'
     end
   end
+
+  def valid_coordinate?(coordinate)
+    coordinate.to_s[/^[a-hA-H][1-8]$/] != nil
+  end
 end
