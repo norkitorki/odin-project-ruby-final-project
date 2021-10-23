@@ -29,7 +29,7 @@ class ChessPiece
   def to_coordinate(vector)
     return nil unless valid_vector?(vector)
 
-    "#{('A'..'H').to_a[vector[0]]}#{vector[1] + 1}"
+    "#{('A'..'H').to_a[vector[1]]}#{vector[0] + 1}"
   end
 
   def valid_coordinate?(coordinate)
