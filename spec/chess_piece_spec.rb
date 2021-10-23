@@ -142,4 +142,54 @@ describe ChessPiece do
       end
     end
   end
+
+  describe '#valid_vector?' do
+    context 'when the vector is valid' do
+      it 'should return true' do
+        valid_vector = [5, 6]
+        expect(chess_piece.valid_vector?(valid_vector)).to eq(true)
+      end
+    end
+
+    context 'when the vector is invalid' do
+      it 'should return false when the first integer is bigger than 7' do
+        invalid_vector = [10, 5]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+
+      it 'should return false when the last integer is bigger than 7' do
+        invalid_vector = [2, 24]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+
+      it 'should return false when the first integer is negative' do
+        invalid_vector = [-2, 1]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+
+      it 'should return false when the last integer is negative' do
+        invalid_vector = [4, -6]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+    end
+
+    context 'when the vector array is of wrong length' do
+      it 'should return false when the array length is smaller than 2' do
+        invalid_vector = [2]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+
+      it 'should return false when the array length is bigger than 2' do
+        invalid_vector = [1, 6, 2]
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+    end
+
+    context 'when the vector array items are not of type integer' do
+      it 'should return false' do
+        invalid_vector = [3.0, '2']
+        expect(chess_piece.valid_vector?(invalid_vector)).to eq(false)
+      end
+    end
+  end
 end
