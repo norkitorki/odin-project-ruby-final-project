@@ -37,8 +37,7 @@ class ChessPiece
   end
 
   def valid_vector?(vector)
-    return false unless vector.is_a?(Array) && vector.length == 2
-
-    vector[0].between?(0, 7) && vector[1].between?(0, 7)
+    vector.is_a?(Array) && vector.length == 2 &&
+      vector.all? { |e| e.is_a?(Integer) && e.between?(0, 7) }
   end
 end
