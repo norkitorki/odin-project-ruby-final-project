@@ -30,4 +30,29 @@ describe Bishop do
       end
     end
   end
+
+  describe '#left_up' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(bishop.left_up).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid moves from the left up from G4' do
+        position = 'G4'
+        bishop.position = position
+        moves = %w[F5 E6 D7 C8]
+        expect(bishop.left_up).to eq(moves)
+      end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'C8'
+        bishop.position = position
+        moves = []
+        expect(bishop.left_up).to eq(moves)
+      end
+    end
+  end
 end
