@@ -10,7 +10,7 @@ class ChessPiece
 
   def position=(coordinate)
     if valid_coordinate?(coordinate)
-      @file = coordinate[0]
+      @file = coordinate[0].upcase
       @rank = coordinate[1]
       @position = coordinate
     else
