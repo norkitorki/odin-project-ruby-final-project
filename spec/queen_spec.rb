@@ -19,21 +19,21 @@ describe Queen do
         position = 'E4'
         queen.position = position
         moves = %w[F5 G6 H7 F4 G4 H4 F3 G2 H1 E3 E2 E1 D3 C2 B1 D4 C4 B4 A4 D5 C6 B7 A8 E5 E6 E7 E8]
-        expect(knight.moveset).to match_array(moves)
+        expect(queen.moveset).to match_array(moves)
       end
 
       it 'should return the next valid moves from coordinate A7' do
         position = 'A7'
-        knight.position = position
+        queen.position = position
         moves = %w[B8 B7 C7 D7 E7 F7 G7 H7 B6 C5 D4 E3 F2 G1 A6 A5 A4 A3 A2 A1 A8]
-        expect(knight.moveset).to match_array(moves)
+        expect(queen.moveset).to match_array(moves)
       end
 
       it 'should return the next valid moves from coordinate H5' do
         position = 'H5'
-        knight.position = position
+        queen.position = position
         moves = %w[H4 H3 H2 H1 G4 F3 E2 D1 G5 F5 E5 D5 C5 B5 A5 G6 F7 E8 H6 H7 H8]
-        expect(knight.moveset).to match_array(moves)
+        expect(queen.moveset).to match_array(moves)
       end
     end
   end
