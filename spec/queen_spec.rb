@@ -47,11 +47,12 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves from the right up from C2'
-      position = 'C2'
-      queen.position = position
-      moves = %w[D3 E4 F5 G6 H7]
-      expect(queen.right_up).to eq(moves)
+      it 'should return the next valid moves from the right up from C2' do
+        position = 'C2'
+        queen.position = position
+        moves = %w[D3 E4 F5 G6 H7]
+        expect(queen.right_up).to eq(moves)
+      end
     end
 
     it 'should return an empty array when there are no valid moves' do
@@ -71,18 +72,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves to the right of B7'
-      position = 'B7'
-      queen.position = position
-      moves = %w[C7 D7 E7 F7 G7 H7]
-      expect(queen.right).to eq(moves)
-    end
+      it 'should return the next valid moves to the right of B7' do
+        position = 'B7'
+        queen.position = position
+        moves = %w[C7 D7 E7 F7 G7 H7]
+        expect(queen.right).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'H2'
-      queen.position = position
-      moves = []
-      expect(queen.right).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'H2'
+        queen.position = position
+        moves = []
+        expect(queen.right).to eq(moves)
+      end
     end
   end
 
@@ -95,18 +97,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves from the right down from A5'
-      position = 'A5'
-      queen.position = position
-      moves = %w[B4 C3 D2 E1]
-      expect(queen.right_down).to eq(moves)
-    end
+      it 'should return the next valid moves from the right down from A5' do
+        position = 'A5'
+        queen.position = position
+        moves = %w[B4 C3 D2 E1]
+        expect(queen.right_down).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'E1'
-      queen.position = position
-      moves = []
-      expect(queen.right_down).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'E1'
+        queen.position = position
+        moves = []
+        expect(queen.right_down).to eq(moves)
+      end
     end
   end
 
@@ -119,18 +122,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves down from F7'
-      position = 'F7'
-      queen.position = position
-      moves = %w[F6 F5 F4 F3 F2 F1]
-      expect(queen.down).to eq(moves)
-    end
+      it 'should return the next valid moves down from F7' do
+        position = 'F7'
+        queen.position = position
+        moves = %w[F6 F5 F4 F3 F2 F1]
+        expect(queen.down).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'D1'
-      queen.position = position
-      moves = []
-      expect(queen.down).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'D1'
+        queen.position = position
+        moves = []
+        expect(queen.down).to eq(moves)
+      end
     end
   end
 
@@ -143,18 +147,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves from the left down from G6'
-      position = 'G6'
-      queen.position = position
-      moves = %w[F5 E4 D3 C2 B1]
-      expect(queen.left_down).to eq(moves)
-    end
+      it 'should return the next valid moves from the left down from G6' do
+        position = 'G6'
+        queen.position = position
+        moves = %w[F5 E4 D3 C2 B1]
+        expect(queen.left_down).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'A4'
-      queen.position = position
-      moves = []
-      expect(queen.left_down).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'A4'
+        queen.position = position
+        moves = []
+        expect(queen.left_down).to eq(moves)
+      end
     end
   end
 
@@ -167,18 +172,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves to the left of H2'
-      position = 'H2'
-      queen.position = position
-      moves = %w[G2 F2 E2 D2 C2 B2 A2]
-      expect(queen.left).to eq(moves)
-    end
+      it 'should return the next valid moves to the left of H2' do
+        position = 'H2'
+        queen.position = position
+        moves = %w[G2 F2 E2 D2 C2 B2 A2]
+        expect(queen.left).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'A6'
-      queen.position = position
-      moves = []
-      expect(queen.left).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'A6'
+        queen.position = position
+        moves = []
+        expect(queen.left).to eq(moves)
+      end
     end
   end
 
@@ -191,18 +197,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves from the left up from F1'
-      position = 'F1'
-      queen.position = position
-      moves = %w[E2 D3 C4 B5 A6]
-      expect(queen.left_up).to eq(moves)
-    end
+      it 'should return the next valid moves from the left up from F1' do
+        position = 'F1'
+        queen.position = position
+        moves = %w[E2 D3 C4 B5 A6]
+        expect(queen.left_up).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'A6'
-      queen.position = position
-      moves = []
-      expect(queen.left_up).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'A6'
+        queen.position = position
+        moves = []
+        expect(queen.left_up).to eq(moves)
+      end
     end
   end
 
@@ -215,18 +222,19 @@ describe Queen do
     end
 
     context 'when a position is asigned' do
-      it 'should return the next valid moves up from D2'
-      position = 'D2'
-      queen.position = position
-      moves = %w[D3 D4 D5 D6 D7 D8]
-      expect(queen.up).to eq(moves)
-    end
+      it 'should return the next valid moves up from D2' do
+        position = 'D2'
+        queen.position = position
+        moves = %w[D3 D4 D5 D6 D7 D8]
+        expect(queen.up).to eq(moves)
+      end
 
-    it 'should return an empty array when there are no valid moves' do
-      position = 'E8'
-      queen.position = position
-      moves = []
-      expect(queen.up).to eq(moves)
+      it 'should return an empty array when there are no valid moves' do
+        position = 'E8'
+        queen.position = position
+        moves = []
+        expect(queen.up).to eq(moves)
+      end
     end
   end
 end
