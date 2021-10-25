@@ -15,7 +15,7 @@ class Queen < ChessPiece
 
     r_rank = rank.to_i
     moves = []
-    (file.next..'H').each { |file, i| r_rank >= 8 ? break : moves << "#{file}#{r_rank += 1}" }
+    (file.next..'H').each { |file| r_rank >= 8 ? break : moves << "#{file}#{r_rank += 1}" }
     moves
   end
 
