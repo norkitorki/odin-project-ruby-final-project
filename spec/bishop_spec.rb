@@ -122,7 +122,7 @@ describe Bishop do
     end
 
     context 'when a position is assigned' do
-      it 'should return the next valid moves from the right down from A3' do
+      it 'should return the next valid moves from the right up from A3' do
         position = 'A3'
         bishop.position = position
         moves = %w[B4 C5 D6 E7 F8]
