@@ -6,6 +6,38 @@ describe Bishop do
   subject(:bishop) { described_class.new(unicode_bishop) }
   let(:unicode_bishop) { '🨃' }
 
+  describe '#moveset' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(bishop.moveset).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid moves from coordinate D4' do
+        position = 'D4'
+        bishop.position = position
+        moves = %w[C3 B2 A1 C5 B6 A7 E3 F2 G1 E5 F6 G7 H8]
+        expect(bishop.moveset).to match_array(moves)
+      end
+
+      it 'should return the next valid moves from coordinate A8' do
+        position = 'A8'
+        bishop.position = position
+        moves = %w[B7 C6 D5 E4 F3 G2 H1]
+        expect(bishop.moveset).to match_array(moves)
+      end
+
+      it 'should return the next valid moves from coordinate H6' do
+        position = 'H6'
+        bishop.position = position
+        moves = %w[G5 F4 E3 D2 C1 G7 F8]
+        expect(bishop.moveset).to match_array(moves)
+      end
+    end
+  end
+
   describe '#left_down' do
     context 'when position is nil' do
       it 'should return an empty array' do
