@@ -12,4 +12,8 @@ class Queen < ChessPiece
     (file.next..'H').each { |file, i| r_rank >= 8 ? break : moves << "#{file}#{r_rank += 1}" }
     moves
   end
+
+  def right
+    position ? (file.next..'H').map { |file| "#{file}#{rank.to_i}" } : []
+  end
 end
