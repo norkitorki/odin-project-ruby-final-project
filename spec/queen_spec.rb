@@ -85,4 +85,28 @@ describe Queen do
       expect(queen.right).to eq(moves)
     end
   end
+
+  describe '#right_down' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(queen.right_down).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is asigned' do
+      it 'should return the next valid moves from the right down from A5'
+      position = 'A5'
+      queen.position = position
+      moves = %w[B4 C3 D2 E1]
+      expect(queen.right_down).to eq(moves)
+    end
+
+    it 'should return an empty array when there are no valid moves' do
+      position = 'E1'
+      queen.position = position
+      moves = []
+      expect(queen.right_down).to eq(moves)
+    end
+  end
 end
