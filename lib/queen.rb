@@ -51,4 +51,8 @@ class Queen < ChessPiece
     ('A'...file).to_a.reverse.each { |file| l_rank >= 8 ? break : moves << "#{file}#{l_rank += 1}" }
     moves
   end
+
+  def up
+    position ? (rank.to_i + 1).upto(8).map { |rank| "#{file}#{rank}" } : []
+  end
 end
