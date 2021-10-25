@@ -16,4 +16,13 @@ class Queen < ChessPiece
   def right
     position ? (file.next..'H').map { |file| "#{file}#{rank.to_i}" } : []
   end
+
+  def right_down
+    return [] unless position
+
+    r_rank = rank.to_i
+    moves = []
+    (file.next..'H').each { |file| r_rank <= 1 ? break : moves << "#{file}#{r_rank -= 1}" }
+    moves
+  end
 end
