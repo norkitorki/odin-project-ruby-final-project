@@ -42,4 +42,13 @@ class Queen < ChessPiece
   def left
     position ? ('A'...file).to_a.reverse.map { |file| "#{file}#{rank}" } : []
   end
+
+  def left_up
+    return [] unless position
+
+    l_rank = rank.to_i
+    moves = []
+    ('A'...file).to_a.reverse.each { |file| l_rank >= 8 ? break : moves << "#{file}#{l_rank += 1}" }
+    moves
+  end
 end
