@@ -22,17 +22,19 @@ describe Pawn do
         expect(pawn.moveset).to match_array(moves)
       end
 
-      it 'should return the next valid moves from coordinate F2' do
-        position = 'F2'
-        bishop.position = position
-        moves = %w[F3 F4]
-        expect(pawn.moveset).to match_array(moves)
+      context 'when the pawn is placed at its initial position' do
+        it 'should return the next valid moves from coordinate F2' do
+          position = 'F2'
+          pawn.position = position
+          moves = %w[F3 F4]
+          expect(pawn.moveset).to match_array(moves)
+        end
       end
 
-      it 'should return the next valid move from coordinate H8' do
+      it 'should return an empty array when there is no valid move' do
         position = 'H8'
-        bishop.position = position
-        moves = %w[]
+        pawn.position = position
+        moves = []
         expect(pawn.moveset).to match_array(moves)
       end
     end
