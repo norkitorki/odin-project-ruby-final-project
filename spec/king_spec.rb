@@ -162,4 +162,29 @@ describe King do
       end
     end
   end
+
+  describe '#left' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(king.left).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid move to the left of H1' do
+        position = 'H1'
+        king.position = position
+        moves = %w[G1]
+        expect(king.left).to eq(moves)
+      end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'A3'
+        king.position = position
+        moves = []
+        expect(king.left).to eq(moves)
+      end
+    end
+  end
 end
