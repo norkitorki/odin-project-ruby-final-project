@@ -38,11 +38,11 @@ describe Rook do
     end
   end
 
-  describe '#right_moves' do
+  describe '#right' do
     context 'when position is nil' do
       it 'should return an empty array' do
         empty_array = []
-        expect(rook.right_moves).to eq(empty_array)
+        expect(rook.right).to eq(empty_array)
       end
     end
 
@@ -51,23 +51,23 @@ describe Rook do
         position = 'B6'
         rook.position = position
         moves = %w[C6 D6 E6 F6 G6 H6]
-        expect(rook.right_moves).to eq(moves)
+        expect(rook.right).to eq(moves)
       end
 
       it 'should return an empty array when there are no valid moves' do
         position = 'H8'
         rook.position = position
         moves = []
-        expect(rook.right_moves).to eq(moves)
+        expect(rook.right).to eq(moves)
       end
     end
   end
 
-  describe '#down_moves' do
+  describe '#down' do
     context 'when position is nil' do
       it 'should return an empty array' do
         empty_array = []
-        expect(rook.down_moves).to eq(empty_array)
+        expect(rook.down).to eq(empty_array)
       end
     end
 
@@ -76,23 +76,23 @@ describe Rook do
         position = 'G7'
         rook.position = position
         moves = %w[G6 G5 G4 G3 G2 G1]
-        expect(rook.down_moves).to eq(moves)
+        expect(rook.down).to eq(moves)
       end
 
       it 'should return an empty array when there are no valid moves' do
         position = 'E1'
         rook.position = position
         moves = []
-        expect(rook.down_moves).to eq(moves)
+        expect(rook.down).to eq(moves)
       end
     end
   end
 
-  describe '#left_moves' do
+  describe '#left' do
     context 'when position is nil' do
       it 'should return an empty array' do
         empty_array = []
-        expect(rook.left_moves).to eq(empty_array)
+        expect(rook.left).to eq(empty_array)
       end
     end
 
@@ -101,23 +101,23 @@ describe Rook do
         position = 'E6'
         rook.position = position
         moves = %w[D6 C6 B6 A6]
-        expect(rook.left_moves).to eq(moves)
+        expect(rook.left).to eq(moves)
       end
 
       it 'should return an empty array when there are no valid moves' do
         position = 'A6'
         rook.position = position
         moves = []
-        expect(rook.left_moves).to eq(moves)
+        expect(rook.left).to eq(moves)
       end
     end
   end
 
-  describe '#up_moves' do
+  describe '#up' do
     context 'when position is nil' do
       it 'should return an empty array' do
         empty_array = []
-        expect(rook.up_moves).to eq(empty_array)
+        expect(rook.up).to eq(empty_array)
       end
     end
 
@@ -126,14 +126,14 @@ describe Rook do
         position = 'C2'
         rook.position = position
         moves = %w[C3 C4 C5 C6 C7 C8]
-        expect(rook.up_moves).to eq(moves)
+        expect(rook.up).to eq(moves)
       end
 
       it 'should return an empty array when there are no valid moves' do
         position = 'C8'
         rook.position = position
         moves = []
-        expect(rook.up_moves).to eq(moves)
+        expect(rook.up).to eq(moves)
       end
     end
   end
