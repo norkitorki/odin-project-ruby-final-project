@@ -1,7 +1,11 @@
 # frozen-string-literal: true
 
+require_relative 'chess_traversal'
+
 # Parent class for chess pieces
 class ChessPiece
+  include ChessTraversal
+
   attr_reader :symbol, :position, :file, :rank
 
   def initialize(symbol)
