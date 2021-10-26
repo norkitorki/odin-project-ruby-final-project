@@ -9,4 +9,10 @@ class Pawn < ChessPiece
 
     position[1] == '2' ? up(2) : up(1)
   end
+
+  def diagonal_up
+    return [] unless position
+
+    left_up(1) + right_up(1)
+  end
 end
