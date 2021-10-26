@@ -39,4 +39,43 @@ describe Pawn do
       end
     end
   end
+
+  describe '#diagonal_up' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(pawn.diagonal_up).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid moves from coordinate D3' do
+        position = 'D3'
+        pawn.position = position
+        moves = %w[C4 E4]
+        expect(pawn.diagonal_up).to eq(moves)
+      end
+
+      it 'should return the next valid move from coordinate A4' do
+        position = 'A4'
+        pawn.position = position
+        moves = %w[B5]
+        expect(pawn.diagonal_up).to eq(moves)
+      end
+
+      it 'should return the next valid move from coordinate H3' do
+        position = 'H3'
+        pawn.position = position
+        moves = %w[G4]
+        expect(pawn.diagonal_up).to eq(moves)
+      end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'E8'
+        pawn.position = position
+        moves = %w[]
+        expect(pawn.diagonal_up).to eq(moves)
+      end
+    end
+  end
 end
