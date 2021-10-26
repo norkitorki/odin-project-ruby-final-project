@@ -46,20 +46,45 @@ describe King do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid move from the right up from G1' do
         position = 'G1'
         king.position = position
         moves = %w[H2]
         expect(king.right_up).to eq(moves)
       end
+
+      it 'should return an empty array when there are no valid moves' do
+        position = 'H2'
+        king.position = position
+        moves = []
+        expect(king.right_up).to eq(moves)
+      end
+    end
+  end
+
+  describe '#right' do
+    context 'when position is nil' do
+      it 'should return an empty array' do
+        empty_array = []
+        expect(king.right).to eq(empty_array)
+      end
+    end
+
+    context 'when a position is assigned' do
+      it 'should return the next valid move to the right of F3' do
+        position = 'F3'
+        king.position = position
+        moves = %w[G3]
+        expect(king.right).to eq(moves)
+      end
     end
 
     it 'should return an empty array when there are no valid moves' do
-      position = 'H2'
+      position = 'H1'
       king.position = position
       moves = []
-      expect(king.right_up).to eq(moves)
+      expect(king.right).to eq(moves)
     end
   end
 end
