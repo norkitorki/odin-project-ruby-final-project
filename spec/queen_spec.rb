@@ -46,7 +46,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves from the right up from C2' do
         position = 'C2'
         queen.position = position
@@ -71,7 +71,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves to the right of B7' do
         position = 'B7'
         queen.position = position
@@ -96,7 +96,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves from the right down from A5' do
         position = 'A5'
         queen.position = position
@@ -121,7 +121,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves down from F7' do
         position = 'F7'
         queen.position = position
@@ -146,7 +146,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves from the left down from G6' do
         position = 'G6'
         queen.position = position
@@ -171,7 +171,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves to the left of H2' do
         position = 'H2'
         queen.position = position
@@ -196,7 +196,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves from the left up from F1' do
         position = 'F1'
         queen.position = position
@@ -221,7 +221,7 @@ describe Queen do
       end
     end
 
-    context 'when a position is asigned' do
+    context 'when a position is assigned' do
       it 'should return the next valid moves up from D2' do
         position = 'D2'
         queen.position = position
