@@ -1,0 +1,362 @@
+---
+:active_player_name: Player1
+:turn: 3
+:player1:
+  :@name: Player1
+  :@pawn:
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: A
+    rank: '2'
+    position: A2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: B
+    rank: '2'
+    position: B2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: C
+    rank: '2'
+    position: C2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: D
+    rank: '4'
+    position: D4
+    symbol: "\U0001FA05"
+    moved: true
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: E
+    rank: '2'
+    position: E2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: F
+    rank: '2'
+    position: F2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: G
+    rank: '2'
+    position: G2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: H
+    rank: '2'
+    position: H2
+    symbol: "\U0001FA05"
+    moved: false
+    color: :white
+  :@rook:
+  - !ruby/object:ChessPiece
+    type: :rook
+    file: A
+    rank: '1'
+    position: A1
+    symbol: "\U0001FA02"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :rook
+    file: H
+    rank: '1'
+    position: H1
+    symbol: "\U0001FA02"
+    moved: false
+    color: :white
+  :@knight:
+  - !ruby/object:ChessPiece
+    type: :knight
+    file: B
+    rank: '1'
+    position: B1
+    symbol: "\U0001FA04"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :knight
+    file: G
+    rank: '1'
+    position: G1
+    symbol: "\U0001FA04"
+    moved: false
+    color: :white
+  :@bishop:
+  - !ruby/object:ChessPiece
+    type: :bishop
+    file: C
+    rank: '1'
+    position: C1
+    symbol: "\U0001FA03"
+    moved: false
+    color: :white
+  - !ruby/object:ChessPiece
+    type: :bishop
+    file: F
+    rank: '1'
+    position: F1
+    symbol: "\U0001FA03"
+    moved: false
+    color: :white
+  :@queen:
+  - !ruby/object:ChessPiece
+    type: :queen
+    file: D
+    rank: '1'
+    position: D1
+    symbol: "\U0001FA01"
+    moved: false
+    color: :white
+  :@king:
+  - !ruby/object:ChessPiece
+    type: :king
+    file: E
+    rank: '1'
+    position: E1
+    symbol: "\U0001FA00"
+    moved: false
+    color: :white
+  :@captures: []
+:player2:
+  :@name: Player2
+  :@pawn:
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: A
+    rank: '7'
+    position: A7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: B
+    rank: '7'
+    position: B7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: C
+    rank: '7'
+    position: C7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: D
+    rank: '7'
+    position: D7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: E
+    rank: '5'
+    position: E5
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: true
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: F
+    rank: '7'
+    position: F7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: G
+    rank: '7'
+    position: G7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :pawn
+    file: H
+    rank: '7'
+    position: H7
+    symbol: "\e[0;90;49m\U0001FA05 \e[0m"
+    moved: false
+    color: :black
+  :@rook:
+  - !ruby/object:ChessPiece
+    type: :rook
+    file: A
+    rank: '8'
+    position: A8
+    symbol: "\e[0;90;49m\U0001FA02 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :rook
+    file: H
+    rank: '8'
+    position: H8
+    symbol: "\e[0;90;49m\U0001FA02 \e[0m"
+    moved: false
+    color: :black
+  :@knight:
+  - !ruby/object:ChessPiece
+    type: :knight
+    file: B
+    rank: '8'
+    position: B8
+    symbol: "\e[0;90;49m\U0001FA04 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :knight
+    file: G
+    rank: '8'
+    position: G8
+    symbol: "\e[0;90;49m\U0001FA04 \e[0m"
+    moved: false
+    color: :black
+  :@bishop:
+  - !ruby/object:ChessPiece
+    type: :bishop
+    file: C
+    rank: '8'
+    position: C8
+    symbol: "\e[0;90;49m\U0001FA03 \e[0m"
+    moved: false
+    color: :black
+  - !ruby/object:ChessPiece
+    type: :bishop
+    file: F
+    rank: '8'
+    position: F8
+    symbol: "\e[0;90;49m\U0001FA03 \e[0m"
+    moved: false
+    color: :black
+  :@queen:
+  - !ruby/object:ChessPiece
+    type: :queen
+    file: D
+    rank: '8'
+    position: D8
+    symbol: "\e[0;90;49m\U0001FA01 \e[0m"
+    moved: false
+    color: :black
+  :@king:
+  - !ruby/object:ChessPiece
+    type: :king
+    file: E
+    rank: '8'
+    position: E8
+    symbol: "\e[0;90;49m\U0001FA00 \e[0m"
+    moved: false
+    color: :black
+  :@captures: []
+:chess_board:
+  :@files:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - H
+  :@ranks:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  :@inverted: false
+  :@fields:
+  - - "\U0001FA02"
+    - "\U0001FA04"
+    - "\U0001FA03"
+    - "\U0001FA01"
+    - "\U0001FA00"
+    - "\U0001FA03"
+    - "\U0001FA04"
+    - "\U0001FA02"
+  - - "\U0001FA05"
+    - "\U0001FA05"
+    - "\U0001FA05"
+    - " "
+    - "\U0001FA05"
+    - "\U0001FA05"
+    - "\U0001FA05"
+    - "\U0001FA05"
+  - - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+  - - " "
+    - " "
+    - " "
+    - "\U0001FA05"
+    - " "
+    - " "
+    - " "
+    - " "
+  - - " "
+    - " "
+    - " "
+    - " "
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - " "
+    - " "
+    - " "
+  - - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+    - " "
+  - - "\e[0;90;49m\U0001FA05 \e[0m"
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - " "
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+    - "\e[0;90;49m\U0001FA05 \e[0m"
+  - - "\e[0;90;49m\U0001FA02 \e[0m"
+    - "\e[0;90;49m\U0001FA04 \e[0m"
+    - "\e[0;90;49m\U0001FA03 \e[0m"
+    - "\e[0;90;49m\U0001FA01 \e[0m"
+    - "\e[0;90;49m\U0001FA00 \e[0m"
+    - "\e[0;90;49m\U0001FA03 \e[0m"
+    - "\e[0;90;49m\U0001FA04 \e[0m"
+    - "\e[0;90;49m\U0001FA02 \e[0m"
