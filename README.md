@@ -4,6 +4,8 @@ The final project of the Odin-Project Ruby Curriculum involves the creation of a
 
 [![Run on Repl.it](https://repl.it/badge/github/norkitorki/odin-project-ruby-final-project)](https://replit.com/@norkitorki/odin-project-ruby-final-project)
 
+![chess example](/images/chess.png)
+
 ## Installation and Usage
 
 ```
