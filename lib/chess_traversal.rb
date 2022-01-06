@@ -1,13 +1,7 @@
 # frozen-string-literal: true
 
-# Chess board traversal module
+# chess piece traversal methods
 module ChessTraversal
-  def moveset
-    return [] unless position
-
-    right_up + right + right_down + down + left_down + left + left_up + up
-  end
-
   def right_up(steps = 8)
     return [] unless position
 
@@ -46,7 +40,7 @@ module ChessTraversal
     return [] unless position
 
     moves = []
-    (rank.to_i - 1).downto(1).map.with_index do |rank, i|
+    (rank.to_i - 1).downto(1).with_index do |rank, i|
       i == steps ? break : moves << "#{file}#{rank}"
     end
     moves
@@ -88,7 +82,7 @@ module ChessTraversal
     return [] unless position
 
     moves = []
-    (rank.to_i + 1).upto(8).each_with_index do |rank, i|
+    (rank.to_i + 1).upto(8).with_index do |rank, i|
       i == steps ? break : moves << "#{file}#{rank}"
     end
     moves
