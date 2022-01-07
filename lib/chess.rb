@@ -34,7 +34,6 @@ class Chess
     [player1, player2].each(&:reset)
     ChessPiece.setup_pieces(player1, WHITE_PIECES, :white)
     ChessPiece.setup_pieces(player2, BLACK_PIECES, :black)
-    # setup_player_pieces_edit(WHITE_PIECES, BLACK_PIECES)
     @active_player = player1
     update_board(reset: true)
   end
