@@ -1,7 +1,7 @@
 # frozen-string-literal: true
 
-# chess piece traversal methods
-module ChessTraversal
+# chess traversal functionality
+module Traversable
   def right_up(steps = 8)
     return [] unless position
 
