@@ -1,7 +1,7 @@
 # frozen-string-literal: true
 
 require_relative 'pieces_setup'
-require_relative 'chess_traversal'
+require_relative 'traversable'
 require_relative 'checkable'
 require_relative 'promotable'
 require_relative 'castleable'
@@ -11,7 +11,7 @@ require_relative 'drawable'
 class ChessPiece
   extend PiecesSetup
   extend Drawable
-  include ChessTraversal
+  include Traversable
   include Checkable
   include Promotable
   include Castleable
@@ -102,7 +102,10 @@ class ChessPiece
          when true then down(moved? ? 1 : 2)
          else up(moved? ? 1 : 2)
          end
-    up.reject { |m| player_positions.any?(m) || opponent_positions.any?(m) }
+    piece_positions = player_positions + opponent_positions
+    up.clear if piece_positions.any?(up.first)
+    up.pop if piece_positions.any?(up.last)
+    up
   end
 
   def to_coordinate(vec)
