@@ -9,10 +9,11 @@ module ChessInput
   end
 
   def main_menu
-    clear
+    system('clear')
     puts main_menu_message
-    command = input(%w[b black e exit l load r reset s save start w white])
+    command = input(%w[b black c computer e exit l load r reset s save start w white])
     return assign_player(command) if command.start_with?(/b|w/)
+    return assign_computer if command.start_with?('c')
     return save_game if command == 'save'
     return load_game if command.start_with?('l')
     return if command.start_with?('e')
@@ -26,6 +27,16 @@ module ChessInput
   def assign_player(color)
     puts 'Please input a name:'
     (color.start_with?('w') ? player1 : player2).name = gets.chomp
+    play
+  end
+
+  def assign_computer
+    if player2 == computer
+      @player2 = @initial_player2
+    else
+      @initial_player2 = player2
+      @player2 = computer
+    end
     play
   end
 
@@ -85,8 +96,8 @@ module ChessInput
     p_pieces = active_player.pieces
     o_pieces = opponent.pieces
 
-    return stalemate_message(turn) if ChessPiece::stalemate?(p_pieces, o_pieces)
-    return dead_draw_message(turn) if ChessPiece::dead_position?(p_pieces, o_pieces)
+    return stalemate_message(turn) if ChessPiece.stalemate?(p_pieces, o_pieces)
+    return dead_draw_message(turn) if ChessPiece.dead_position?(p_pieces, o_pieces)
 
     check_mate_message(opponent, turn)
   end
