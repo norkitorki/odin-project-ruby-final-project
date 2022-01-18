@@ -11,6 +11,7 @@ module Messageable
 
       Input...
         #{game_options('start', 's')} to start/resume the game.
+        #{game_options('computer', 'c')} to enable/disable the Computer.
         #{game_options('white', 'w')} to assign a Player to the White Pieces.
         #{game_options('black', 'b')} to assign a Player to the Black Pieces.
         #{game_options('save')} to save the current game.
