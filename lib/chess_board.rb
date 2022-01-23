@@ -5,7 +5,7 @@ class ChessBoard
   attr_reader :files, :ranks, :fields
 
   def initialize
-    @files = ('A'..'H').to_a
+    @files = ('a'..'h').to_a
     @ranks = (1..8).to_a
     @inverted = false
     clear
