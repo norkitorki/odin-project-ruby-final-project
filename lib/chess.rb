@@ -96,6 +96,13 @@ class Chess
     new_piece = pawn.class.new(:queen, position, BLACK_PIECES[:queen], color: :black)
     computer.add_piece(new_piece)
   end
+
+  def save_previous_move(piece, initial_position)
+    capture = active_player.find_piece_by(:position, piece.position, active_player.captures)
+    hash = { piece: piece, initial_position: initial_position, capture: capture }
+    @previous_move = hash
+  end
+
   def update_board(reset: false)
     chess_board.clear(reset: reset)
     pieces = (player1.pieces + player2.pieces)
