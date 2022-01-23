@@ -75,7 +75,7 @@ class ChessBoard
   end
 
   def colored_piece?(symbol)
-    symbol.match?(/\[\d{1,2}m.{1,2}/)
+    symbol.match?(/\[\d{1,2}m.{1,2}\e/)
   end
 
   def vector(coordinate)
