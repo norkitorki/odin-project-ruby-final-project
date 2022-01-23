@@ -1,8 +1,6 @@
 # frozen-string-literal: true
 
-require_relative 'chess_player'
 require_relative 'chess_piece'
-require_relative 'chess_board'
 require_relative 'pieces_setup'
 require_relative 'messageable'
 require_relative 'pathable'
