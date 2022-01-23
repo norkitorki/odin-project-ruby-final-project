@@ -95,8 +95,6 @@ class ChessBoard
     end.join("\n")
   end
 
-  def row_seperator
-    '  ┠' << Array.new(8, '───').join('┼') << "┨\n"
   end
 
   def top
