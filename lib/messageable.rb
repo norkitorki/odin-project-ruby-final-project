@@ -100,7 +100,7 @@ module Messageable
   private
 
   def color(string, colorcode)
-    "\e[0;#{colorcode};49m#{string}\e[0m"
+    "\e[#{colorcode}m#{string}\e[0m"
   end
 
   def game_options(option1, option2 = nil, colorcode = 32)
