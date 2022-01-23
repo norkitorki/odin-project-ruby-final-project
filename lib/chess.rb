@@ -56,18 +56,23 @@ class Chess
 
   def move(reverted: false)
     until game_over?
-      clear
-      piece = piece_input(reverted) || return
-      clear
-      destination = destination_input(piece) || return
-      piece.update_position(destination)
-      promote_pawn(piece) if piece.promotable?
+      active_player == computer ? computer_move : player_move(reverted) || return
       update_board && post_turn_update && reverted = false
     end
     post_game
   end
 
   private
+
+  def player_move(reverted)
+    clear && (piece = piece_input(reverted)) && clear || return
+    # piece = piece_input(reverted) || return
+    initial_position = piece.position
+    destination = destination_input(piece) || return
+    piece.update_position(destination)
+    promote_pawn(piece) if piece.promotable?
+    save_previous_move(piece, initial_position)
+  end
 
   def promote_pawn(pawn)
     symbols = pawn.color == :white ? WHITE_PIECES : BLACK_PIECES
