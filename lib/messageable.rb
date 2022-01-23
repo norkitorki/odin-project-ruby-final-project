@@ -29,11 +29,25 @@ module Messageable
     MESSAGE
   end
 
+  def previous_move_message
+    return '' unless @previous_move
+
+    piece_type = @previous_move[:piece].type.capitalize
+    initial_position = @previous_move[:initial_position]
+    destination = @previous_move[:piece].position
+
+    if @previous_move[:capture]
+      capture = @previous_move[:capture]
+      "#{opponent.name} has captured #{capture.type} at #{destination}."
+    else
+      "#{opponent.name} has moved #{piece_type} from #{initial_position} to #{destination}."
+    end
+  end
+
   def move_opening_message(player_pieces, opponent_pieces, reverted)
     king = active_player.king.first
     <<~MESSAGE
-      \e[0;36;49mTurn #{turn}\e[0m
-
+      \e[0;36;49mTurn #{turn}\e[0m #{previous_move_message}
       #{"\e[0;31;49mKing at #{king.position} is checked!\e[0m\n" if king.check?(player_pieces, opponent_pieces)}
       #{"\e[0;31;49mReset last move due to checked position.\e[0m\n\n" if reverted}#{chess_board}
       #{piece_selection_message}
