@@ -79,6 +79,16 @@ class Chess
     pawn.promote(active_player, symbols)
   end
 
+  def computer_move
+    move = computer.move(player1.pieces)
+    piece = move[:piece]
+    initial_position = piece.position
+    destination = move[:destination]
+    piece.update_position(destination)
+    computer.capture(opponent.remove_piece(destination)) if player1.piece?(:position, destination)
+    computer_promotion(piece) if piece.promotable?
+    save_previous_move(piece, initial_position)
+  end
   def update_board(reset: false)
     chess_board.clear(reset: reset)
     pieces = (player1.pieces + player2.pieces)
