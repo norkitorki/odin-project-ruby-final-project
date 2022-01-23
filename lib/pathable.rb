@@ -4,7 +4,7 @@
 module Pathable
   private
 
-  PATH_MARKER = "\e[0;32;49m* \e[0m"
+  PATH_MARKER = "\e[32m* \e[0m"
 
   def add_path(moveset, chess_board)
     moveset.each do |pos|
