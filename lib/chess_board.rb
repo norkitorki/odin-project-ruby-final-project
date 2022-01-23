@@ -12,7 +12,7 @@ class ChessBoard
   end
 
   def to_s
-    top << rows << bottom
+    board_squares << "\n   #{files.join('  ')}\n"
   end
 
   def place(coordinate, symbol)
