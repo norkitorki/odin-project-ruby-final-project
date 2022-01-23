@@ -64,7 +64,7 @@ module Messageable
 
       Please choose a chess piece(#{color('coordinate', 32)}) to move:
 
-      [#{pieces.map { |p| " #{color(p.position, 32)}: #{sanitized_symbol(p.symbol)}" }.join}]
+      #{pieces.map { |p| " #{color(p.position, 32)}: \e[48;2;0;128;0m#{sanitized_symbol(p.symbol)}\e[0m" }.join}
     MESSAGE
   end
 
