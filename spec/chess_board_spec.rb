@@ -283,12 +283,12 @@ describe ChessBoard do
     context 'when the symbol is valid' do
       context 'when the symbol is colored' do
         it 'should return true when the symbol length is 1' do
-          colored_king = "\e[0;37;49m🨀\e[0m"
+          colored_king = "\e[30m🨀\e[0m"
           expect(chess_board.valid_symbol?(colored_king)).to eq(true)
         end
 
         it 'should return true when the symbol length is 2' do
-          colored_king = "\e[0;37;49m🨀 \e[0m"
+          colored_king = "\e[30m🨀 \e[0m"
           expect(chess_board.valid_symbol?(colored_king)).to eq(true)
         end
       end
@@ -311,7 +311,7 @@ describe ChessBoard do
 
       context 'when the symbol is colored and not of a length of either 1 or 2' do
         it 'should return false' do
-          invalid_colored_symbol = "\e[0;37;49mKING\e[0m"
+          invalid_colored_symbol = "\e[30mKING\e[0m"
           expect(chess_board.valid_symbol?(invalid_colored_symbol)).to eq(false)
         end
       end
