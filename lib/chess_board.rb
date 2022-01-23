@@ -74,8 +74,8 @@ class ChessBoard
     valid_coordinate?(start) && valid_coordinate?(target) && !field_empty?(start)
   end
 
-  def colored_piece?(string)
-    string[/\e\[0;\d{2};49m.{1,2}\e\[0m/] != nil
+  def colored_piece?(symbol)
+    symbol.match?(/\[\d{1,2}m.{1,2}/)
   end
 
   def vector(coordinate)
