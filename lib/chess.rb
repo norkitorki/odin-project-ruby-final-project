@@ -19,7 +19,7 @@ class Chess
   WHITE_PIECES = { pawn: '🨅', rook: '🨂', knight: '🨄', bishop: '🨃',
                    queen: '🨁', king: '🨀' }.freeze
 
-  BLACK_PIECES = WHITE_PIECES.transform_values { |s| "\e[0;90;49m#{s} \e[0m" }
+  BLACK_PIECES = WHITE_PIECES.transform_values { |s| "\e[30m#{s} \e[0m" }
 
   def initialize(player1, player2, chess_board)
     @player1 = player1
