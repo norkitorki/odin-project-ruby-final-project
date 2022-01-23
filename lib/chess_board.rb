@@ -84,11 +84,15 @@ class ChessBoard
     inverted? ? [8 - rank_vec, 96 - file_vec] : [rank_vec - 1, file_vec - 97]
   end
 
-  def rows
+  def board_squares
     fields.reverse.map.with_index do |row, i|
-      row = row.map { |s| colored_piece?(s) ? s : "#{s} " }.join('│ ')
-      "#{ranks[7 - i]} ┃ #{row}┃\n"
-    end.join(row_seperator)
+      square = i.even? ? :light_square : :dark_square
+      "#{ranks[i]} " << row.map do |s|
+        s = send(square, s)
+        square = square == :light_square ? :dark_square : :light_square
+        s
+      end.join
+    end.join("\n")
   end
 
   def row_seperator
