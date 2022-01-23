@@ -31,6 +31,8 @@ module ChessInput
   end
 
   def assign_computer
+    return main_menu unless computer
+
     if player2 == computer
       @player2 = @initial_player2
     else
