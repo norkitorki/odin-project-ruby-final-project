@@ -14,7 +14,7 @@ class Chess
   include ChessInput
   include Resumable
 
-  attr_reader :player1, :player2, :chess_board, :turn, :active_player
+  attr_reader :player1, :player2, :chess_board, :computer, :turn, :active_player
 
   WHITE_PIECES = { pawn: '🨅', rook: '🨂', knight: '🨄', bishop: '🨃',
                    queen: '🨁', king: '🨀' }.freeze
