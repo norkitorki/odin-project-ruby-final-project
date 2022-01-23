@@ -6,7 +6,7 @@ class ChessBoard
 
   def initialize
     @files = ('a'..'h').to_a
-    @ranks = (1..8).to_a
+    @ranks = (1..8).to_a.reverse
     @inverted = false
     clear
   end
