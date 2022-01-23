@@ -99,5 +99,7 @@ class ChessBoard
     "\e[48;2;222;184;135m #{symbol}#{' ' unless colored_piece?(symbol)}\e[0m"
   end
 
+  def dark_square(symbol = '')
+    "\e[48;2;198;122;8m #{symbol}#{' ' unless colored_piece?(symbol)}\e[0m"
   end
 end
