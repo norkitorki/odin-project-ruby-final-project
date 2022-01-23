@@ -97,11 +97,5 @@ class ChessBoard
 
   end
 
-  def top
-    "  ┏━━━┯━━━┯━━━┯━━━┯━━━┯━━━┯━━━┯━━━┓\n"
-  end
-
-  def bottom
-    "  ┗━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┛\n    #{files.join('   ')}\n"
   end
 end
