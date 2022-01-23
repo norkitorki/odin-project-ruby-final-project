@@ -95,6 +95,8 @@ class ChessBoard
     end.join("\n")
   end
 
+  def light_square(symbol = '')
+    "\e[48;2;222;184;135m #{symbol}#{' ' unless colored_piece?(symbol)}\e[0m"
   end
 
   end
