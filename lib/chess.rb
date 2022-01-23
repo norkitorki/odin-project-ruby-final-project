@@ -21,10 +21,11 @@ class Chess
 
   BLACK_PIECES = WHITE_PIECES.transform_values { |s| "\e[30m#{s} \e[0m" }
 
-  def initialize(player1, player2, chess_board)
+  def initialize(player1, player2, chess_board, computer = nil)
     @player1 = player1
     @player2 = player2
     @chess_board = chess_board
+    @computer = computer
   end
 
   def reset
