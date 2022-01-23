@@ -89,6 +89,13 @@ class Chess
     computer_promotion(piece) if piece.promotable?
     save_previous_move(piece, initial_position)
   end
+
+  def computer_promotion(pawn)
+    position = pawn.position
+    computer.remove_piece(position)
+    new_piece = pawn.class.new(:queen, position, BLACK_PIECES[:queen], color: :black)
+    computer.add_piece(new_piece)
+  end
   def update_board(reset: false)
     chess_board.clear(reset: reset)
     pieces = (player1.pieces + player2.pieces)
