@@ -245,7 +245,7 @@ describe Chess do
       before { allow(chess).to receive(:game_over?).and_return(true) }
 
       it 'should send a call to #post_game and return' do
-        expect(chess).to receive(:post_game).and_return(nil)
+        expect(chess).to receive(:post_game)
 
         chess.move
       end
