@@ -1,6 +1,6 @@
 # frozen-string-literal: true
 
-# Chess board paths for chess pieces
+# chess board traversal marking
 module Pathable
   PATH_MARKER = "\e[32m* \e[0m"
 
