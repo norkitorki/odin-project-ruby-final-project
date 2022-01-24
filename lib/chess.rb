@@ -84,7 +84,7 @@ class Chess
     initial_position = piece.position
     destination = move[:destination]
     piece.update_position(destination)
-    computer.capture(opponent.remove_piece(destination)) if player1.piece?(:position, destination)
+    computer.capture(player1.remove_piece(destination))
     computer_promotion(piece) if piece.promotable?
     save_previous_move(piece, initial_position)
   end
