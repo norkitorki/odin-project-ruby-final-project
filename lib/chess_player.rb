@@ -41,7 +41,7 @@ class ChessPlayer
   end
 
   def capture(piece)
-    captures << piece
+    captures << piece if piece
   end
 
   def piece?(attribute, value)
