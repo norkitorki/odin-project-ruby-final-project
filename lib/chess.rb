@@ -28,6 +28,19 @@ class Chess
     @computer = computer
   end
 
+  def play
+    reset
+    main_menu
+  end
+
+  def move(reverted: false)
+    until game_over?
+      active_player == computer ? computer_move : player_move(reverted) || return
+      update_board && post_turn_update && reverted = false
+    end
+    post_game
+  end
+
   def reset
     @turn = 1
     [player1, player2].each(&:reset)
@@ -35,11 +48,6 @@ class Chess
     ChessPiece.setup_pieces(player2, BLACK_PIECES, :black)
     @active_player = player1
     update_board(reset: true)
-  end
-
-  def play
-    reset
-    main_menu
   end
 
   def game_over?
@@ -52,14 +60,6 @@ class Chess
   def checkmate?
     king = active_player.king.first
     king.checkmate?(active_player.pieces, opponent.pieces)
-  end
-
-  def move(reverted: false)
-    until game_over?
-      active_player == computer ? computer_move : player_move(reverted) || return
-      update_board && post_turn_update && reverted = false
-    end
-    post_game
   end
 
   private
