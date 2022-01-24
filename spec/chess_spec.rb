@@ -14,6 +14,78 @@ describe Chess do
   let(:computer) { instance_double(ChessComputer) }
   subject(:chess) { described_class.new(player1, player2, chess_board, computer) }
 
+  describe '#play' do
+    before do
+      allow(chess).to receive(:reset)
+      allow(chess).to receive(:main_menu)
+    end
+
+    it 'should reset the game' do
+      expect(chess).to receive(:reset)
+
+      chess.play
+    end
+
+    it 'should return to the main menu' do
+      expect(chess).to receive(:main_menu)
+
+      chess.play
+    end
+  end
+
+  describe '#move' do
+    context 'when a game ending condition has been met' do
+      before { allow(chess).to receive(:game_over?).and_return(true) }
+
+      it 'should send a call to #post_game and return' do
+        expect(chess).to receive(:post_game)
+
+        chess.move
+      end
+    end
+
+    context 'when no game ending condition has been met' do
+      before do
+        allow(chess).to receive(:game_over?).and_return(false, true)
+        allow(chess).to receive(:computer_move)
+        allow(chess).to receive(:player_move)
+        allow(chess).to receive(:update_board)
+        allow(chess).to receive(:post_turn_update)
+        allow(chess).to receive(:post_game)
+      end
+
+      context 'when the active_player is the computer' do
+        before { allow(chess).to receive(:active_player).and_return(computer) }
+
+        it 'should send a call to #computer_move' do
+          expect(chess).to receive(:computer_move)
+
+          chess.move
+        end
+      end
+
+      context 'when the active_player is a player' do
+        before { allow(chess).to receive(:active_player).and_return(player1) }
+
+        it 'should send a call to #player_move' do
+          reverted = false
+          expect(chess).to receive(:player_move).with(reverted)
+
+          chess.move(reverted: reverted)
+        end
+
+        context 'when reverted is true' do
+          it 'should send a call to #player_move with true' do
+            reverted = true
+            expect(chess).to receive(:player_move).with(reverted)
+
+            chess.move(reverted: reverted)
+          end
+        end
+      end
+    end
+  end
+
   describe '#reset' do
     before do
       allow(player1).to receive(:reset)
@@ -50,25 +122,6 @@ describe Chess do
       expect(chess).to receive(:update_board).with(reset: true)
 
       chess.reset
-    end
-  end
-
-  describe '#play' do
-    before do
-      allow(chess).to receive(:reset)
-      allow(chess).to receive(:main_menu)
-    end
-
-    it 'should reset the game' do
-      expect(chess).to receive(:reset)
-
-      chess.play
-    end
-
-    it 'should return to the main menu' do
-      expect(chess).to receive(:main_menu)
-
-      chess.play
     end
   end
 
@@ -178,33 +231,6 @@ describe Chess do
     end
   end
 
-  describe '#checkmate?' do
-    let(:king_array) { [instance_double(chess_piece_class)] }
-
-    before do
-      allow(chess).to receive(:active_player).and_return(player1)
-      allow(player1).to receive(:king).and_return(king_array)
-      allow(player1).to receive(:pieces)
-      allow(player2).to receive(:pieces)
-    end
-
-    context "when the current players' king is checkmated" do
-      before { allow(king_array.first).to receive(:checkmate?).and_return(true) }
-
-      it 'should return true' do
-        expect(chess).to be_checkmate
-      end
-    end
-
-    context "when the current players' king is not checkmated" do
-      before { allow(king_array.first).to receive(:checkmate?).and_return(false) }
-
-      it 'should return false' do
-        expect(chess).to_not be_checkmate
-      end
-    end
-  end
-
   describe '#game_over?' do
     before do
       allow(chess).to receive(:active_player).and_return(player1)
@@ -240,55 +266,29 @@ describe Chess do
     end
   end
 
-  describe '#move' do
-    context 'when a game ending condition has been met' do
-      before { allow(chess).to receive(:game_over?).and_return(true) }
+  describe '#checkmate?' do
+    let(:king_array) { [instance_double(chess_piece_class)] }
 
-      it 'should send a call to #post_game and return' do
-        expect(chess).to receive(:post_game)
+    before do
+      allow(chess).to receive(:active_player).and_return(player1)
+      allow(player1).to receive(:king).and_return(king_array)
+      allow(player1).to receive(:pieces)
+      allow(player2).to receive(:pieces)
+    end
 
-        chess.move
+    context "when the current players' king is checkmated" do
+      before { allow(king_array.first).to receive(:checkmate?).and_return(true) }
+
+      it 'should return true' do
+        expect(chess).to be_checkmate
       end
     end
 
-    context 'when no game ending condition has been met' do
-      before do
-        allow(chess).to receive(:game_over?).and_return(false, true)
-        allow(chess).to receive(:computer_move)
-        allow(chess).to receive(:player_move)
-        allow(chess).to receive(:update_board)
-        allow(chess).to receive(:post_turn_update)
-        allow(chess).to receive(:post_game)
-      end
+    context "when the current players' king is not checkmated" do
+      before { allow(king_array.first).to receive(:checkmate?).and_return(false) }
 
-      context 'when the active_player is the computer' do
-        before { allow(chess).to receive(:active_player).and_return(computer) }
-
-        it 'should send a call to #computer_move' do
-          expect(chess).to receive(:computer_move)
-
-          chess.move
-        end
-      end
-
-      context 'when the active_player is a player' do
-        before { allow(chess).to receive(:active_player).and_return(player1) }
-
-        it 'should send a call to #player_move' do
-          reverted = false
-          expect(chess).to receive(:player_move).with(reverted)
-
-          chess.move(reverted: reverted)
-        end
-
-        context 'when reverted is true' do
-          it 'should send a call to #player_move with true' do
-            reverted = true
-            expect(chess).to receive(:player_move).with(reverted)
-
-            chess.move(reverted: reverted)
-          end
-        end
+      it 'should return false' do
+        expect(chess).to_not be_checkmate
       end
     end
   end
