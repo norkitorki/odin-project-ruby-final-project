@@ -252,46 +252,42 @@ describe Chess do
     end
 
     context 'when no game ending condition has been met' do
-      let(:player_piece) { chess_piece_class.new(:queen, 'D1') }
-      let(:destination) { 'D4' }
-
       before do
-        allow(chess).to receive(:clear)
         allow(chess).to receive(:game_over?).and_return(false, true)
-        allow(chess).to receive(:piece_input).and_return(player_piece)
-        allow(chess).to receive(:destination_input).and_return(destination)
-        allow(player_piece).to receive(:update_position).with(destination)
-        allow(player_piece).to receive(:promotable?)
+        allow(chess).to receive(:computer_move)
+        allow(chess).to receive(:player_move)
         allow(chess).to receive(:update_board)
         allow(chess).to receive(:post_turn_update)
         allow(chess).to receive(:post_game)
       end
 
-      it 'should request piece input from the player' do
-        expect(chess).to receive(:piece_input).and_return(player_piece)
+      context 'when the active_player is the computer' do
+        before { allow(chess).to receive(:active_player).and_return(computer) }
 
-        chess.move
-      end
-
-      it 'should request destination input from the player' do
-        expect(chess).to receive(:destination_input).and_return(destination)
-
-        chess.move
-      end
-
-      it "should update the chess pieces' position to the destination" do
-        expect(player_piece).to receive(:update_position).with(destination)
-
-        chess.move
-      end
-
-      context 'when the chess piece is promotable' do
-        before { allow(player_piece).to receive(:promotable?).and_return(true) }
-
-        it 'should send a call to #promote_pawn' do
-          expect(chess).to receive(:promote_pawn).with(player_piece)
+        it 'should send a call to #computer_move' do
+          expect(chess).to receive(:computer_move)
 
           chess.move
+        end
+      end
+
+      context 'when the active_player is a player' do
+        before { allow(chess).to receive(:active_player).and_return(player1) }
+
+        it 'should send a call to #player_move' do
+          reverted = false
+          expect(chess).to receive(:player_move).with(reverted)
+
+          chess.move(reverted: reverted)
+        end
+
+        context 'when reverted is true' do
+          it 'should send a call to #player_move with true' do
+            reverted = true
+            expect(chess).to receive(:player_move).with(reverted)
+
+            chess.move(reverted: reverted)
+          end
         end
       end
     end
