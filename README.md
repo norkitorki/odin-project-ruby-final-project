@@ -9,5 +9,6 @@ The final project of the Odin-Project Ruby Curriculum involves the creation of a
 ## Installation and Usage
 
 ```
-git clone https://github.com/norkitorki/odin-project-ruby-final-project.git && ruby odin-project-ruby-final-project/lib/main.rb
+git clone https://github.com/norkitorki/odin-project-ruby-final-project.git
+cd odin-project-ruby-final-project && ruby lib/main.rb
 ```
