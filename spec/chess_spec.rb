@@ -1,6 +1,7 @@
 # frozen-string-literal: true
 
 require_relative '../lib/chess'
+require_relative '../lib/pathable'
 require_relative '../lib/chess_player'
 require_relative '../lib/chess_board'
 require_relative '../lib/chess_computer'
