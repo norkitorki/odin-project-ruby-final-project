@@ -232,6 +232,21 @@ describe Chess do
     end
   end
 
+  describe '#add_path' do
+    before do
+      allow(chess_board).to receive(:field_empty?).and_return(true)
+      allow(chess_board).to receive(:place)
+    end
+
+    it 'should add the visual chess piece path to the board' do
+      moveset = %w[D3 D4]
+      marker = Chess::PATH_MARKER
+      moveset.each { |pos| expect(chess_board).to receive(:place).with(pos, marker) }
+
+      chess.add_path(moveset, chess_board)
+    end
+  end
+
   describe '#game_over?' do
     before do
       allow(chess).to receive(:active_player).and_return(player1)
