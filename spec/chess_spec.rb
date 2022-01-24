@@ -3,6 +3,7 @@
 require_relative '../lib/chess'
 require_relative '../lib/chess_player'
 require_relative '../lib/chess_board'
+require_relative '../lib/chess_computer'
 
 describe Chess do
   let(:chess_piece_class) { ChessPiece }
@@ -10,7 +11,8 @@ describe Chess do
   let(:player1) { instance_double(player_class, name: 'Player1') }
   let(:player2) { instance_double(player_class, name: 'Player2') }
   let(:chess_board) { instance_double(ChessBoard) }
-  subject(:chess) { described_class.new(player1, player2, chess_board) }
+  let(:computer) { instance_double(ChessComputer) }
+  subject(:chess) { described_class.new(player1, player2, chess_board, computer) }
 
   describe '#reset' do
     before do
