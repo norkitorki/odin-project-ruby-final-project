@@ -247,6 +247,21 @@ describe Chess do
     end
   end
 
+  describe '#remove_path' do
+    before do
+      marker = Chess::PATH_MARKER
+      allow(chess_board).to receive(:at).and_return(marker)
+      allow(chess_board).to receive(:remove)
+    end
+
+    it 'should remove all path markers from the board' do
+      moveset = %w[A1 B2 C3 D4]
+      moveset.each { |pos| expect(chess_board).to receive(:remove).with(pos) }
+
+      chess.remove_path(moveset, chess_board)
+    end
+  end
+
   describe '#game_over?' do
     before do
       allow(chess).to receive(:active_player).and_return(player1)
