@@ -262,6 +262,34 @@ describe Chess do
     end
   end
 
+  describe '#display_path' do
+    let(:moveset) { %w[H6 H5] }
+
+    before do
+      allow(chess).to receive(:add_path)
+      allow(chess).to receive(:puts)
+      allow(chess).to receive(:remove_path)
+    end
+
+    it 'should send a call to #add_path' do
+      expect(chess).to receive(:add_path)
+
+      chess.display_path(moveset, chess_board)
+    end
+
+    it 'should send a call to chess_board#to_s' do
+      expect(chess).to receive(:puts).with(chess_board)
+
+      chess.display_path(moveset, chess_board)
+    end
+
+    it 'should send a call to #remove_path' do
+      expect(chess).to receive(:remove_path)
+
+      chess.display_path(moveset, chess_board)
+    end
+  end
+
   describe '#game_over?' do
     before do
       allow(chess).to receive(:active_player).and_return(player1)
