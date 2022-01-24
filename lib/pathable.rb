@@ -2,8 +2,6 @@
 
 # Chess board paths for chess pieces
 module Pathable
-  private
-
   PATH_MARKER = "\e[32m* \e[0m"
 
   def add_path(moveset, chess_board)
