@@ -187,10 +187,20 @@ describe ChessPlayer do
   end
 
   describe '#capture' do
-    subject(:captured_piece) { double('ChessPiece') }
+    context 'when the chess piece is truthy' do
+      subject(:captured_piece) { double('ChessPiece') }
 
-    it "should add a chess piece to the players' captures" do
-      expect { chess_player.capture(captured_piece) }.to change { chess_player.captures }.from([]).to([captured_piece])
+      it "should add the chess piece to the players' captures" do
+        expect { chess_player.capture(captured_piece) }.to change { chess_player.captures }.from([]).to([captured_piece])
+      end
+    end
+
+    context 'when the chess piece is not truthy' do
+      subject(:falsy_piece) { nil }
+
+      it "should not change the players' captures" do
+        expect { chess_player.capture(falsy_piece) }.not_to change { chess_player.captures }
+      end
     end
   end
 
