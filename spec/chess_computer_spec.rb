@@ -153,3 +153,55 @@ describe ChessComputer do
     end
   end
 
+  describe '#safe_move' do
+    let(:king_piece) { chess_piece_class.new(:king, 'E1') }
+    let(:opponent_king) { chess_piece_class.new(:king, 'E8') }
+
+    context 'when a chess piece can move to a safe coordinate' do
+      let(:computer_pieces) { [chess_piece_class.new(:knight, 'G1'), king_piece] }
+      let(:opponent_pieces) { [chess_piece_class.new(:rook, 'C3'), chess_piece_class.new(:queen, 'A2'), opponent_king] }
+
+      before { allow(computer).to receive(:pieces).and_return(computer_pieces) }
+
+      it 'should return the piece that should be moved' do
+        expect(computer.safe_move(opponent_pieces)[:piece]).to eq(king_piece)
+      end
+
+      it 'should return the destination coordinate' do
+        expected_destinations = %w[F1 D1]
+        destination = computer.safe_move(opponent_pieces)[:destination]
+
+        expect(expected_destinations).to include(destination)
+      end
+    end
+
+    context 'when a chess piece cannot move to a safe coordinate' do
+      let(:computer_pieces) { [chess_piece_class.new(:pawn, 'E2'), king_piece] }
+      let(:opponent_pieces) { [chess_piece_class.new(:rook, 'F4'), chess_piece_class.new(:queen, 'D4'), opponent_king] }
+
+      before { allow(computer).to receive(:pieces).and_return(computer_pieces) }
+
+      it 'should return nil' do
+        expect(computer.safe_move(opponent_pieces)).to eq(nil)
+      end
+    end
+
+    context "when the computers' pieces are empty" do
+      let(:computer_pieces) { [] }
+      let(:opponent_pieces) { [chess_piece_class.new(:pawn, 'D7'), opponent_king] }
+
+      it 'should return nil' do
+        expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+      end
+    end
+
+    context 'when opponent_pieces are empty' do
+      let(:computer_pieces) { [chess_piece_class.new(:bishop, 'H6'), king_piece] }
+      let(:opponent_pieces) { [] }
+
+      it 'should return nil' do
+        expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+      end
+    end
+  end
+
