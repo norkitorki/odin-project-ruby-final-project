@@ -205,3 +205,52 @@ describe ChessComputer do
     end
   end
 
+  describe '#random_move' do
+    let(:queen_piece) { chess_piece_class.new(:queen, 'E2') }
+    let(:king_piece) { chess_piece_class.new(:king, 'E1') }
+    let(:computer_pieces) { [queen_piece, king_piece] }
+    let(:opponent_pieces) { [chess_piece_class.new(:queen, 'E4'), chess_piece_class.new(:king, 'E8')] }
+
+    before { allow(computer).to receive(:pieces).and_return(computer_pieces) }
+
+    it 'should return the piece that should be moved' do
+      expected_pieces = [queen_piece, king_piece]
+      piece = computer.random_move(opponent_pieces)[:piece]
+
+      expect(expected_pieces).to include(piece)
+    end
+
+    it 'should return the destination coordinate' do
+      destination = computer.random_move(opponent_pieces)[:destination]
+      expected_destinations = %w[F3 G4 H5 F2 G2 H2 F1 D1 D2 C2 B2 A2 D3 C4 B5 A6 E3 E4]
+
+      expect(expected_destinations).to include(destination)
+    end
+
+    context "when the computers' pieces are empty" do
+      before { computer_pieces.clear }
+
+      it 'should return nil' do
+        expect(computer.random_move(opponent_pieces)).to eq(nil)
+      end
+    end
+
+    context 'when opponent_pieces are empty' do
+      before { opponent_pieces.clear }
+
+      it 'should return the piece that should be moved' do
+        expected_pieces = [queen_piece, king_piece]
+        piece = computer.random_move(opponent_pieces)[:piece]
+
+        expect(expected_pieces).to include(piece)
+      end
+
+      it 'should return the destination coordinate' do
+        destination = computer.random_move(opponent_pieces)[:destination]
+        expected_destinations = %w[F3 G4 H5 F2 G2 H2 F1 D1 D2 C2 B2 A2 D3 C4 B5 A6 E3 E4 E5 E6 E7 E8]
+
+        expect(expected_destinations).to include(destination)
+      end
+    end
+  end
+end
