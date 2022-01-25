@@ -81,6 +81,8 @@ class ChessComputer < ChessPlayer
   end
 
   def legal_move?(piece, opponent_pieces, destination)
+    return true unless piece.respond_to?(:legal_move?)
+
     piece.legal_move?(pieces, opponent_pieces, destination)
   end
 end
