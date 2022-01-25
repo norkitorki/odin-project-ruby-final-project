@@ -98,3 +98,58 @@ describe ChessComputer do
     end
   end
 
+  describe '#defensive_move' do
+    let(:pawn_piece) { chess_piece_class.new(:pawn, 'D2') }
+    let(:computer_pieces) { [pawn_piece, chess_piece_class.new(:king, 'E1')] }
+    let(:opponent_pieces) { [chess_piece_class.new(:queen, 'G5'), chess_piece_class.new(:king, 'E8')] }
+
+    before { allow(computer).to receive(:pieces).and_return(computer_pieces) }
+
+    context 'when a chess piece is under attack' do
+      context 'when the chess piece can retreat to a safe coordinate' do
+        it 'should return the piece that should be moved' do
+          expect(computer.defensive_move(opponent_pieces)[:piece]).to eq(pawn_piece)
+        end
+
+        it 'should return the destination coordinate' do
+          expected_destinations = %w[D3 D4]
+          destination = computer.defensive_move(opponent_pieces)[:destination]
+
+          expect(expected_destinations).to include(destination)
+        end
+      end
+
+      context 'when the chess piece cannot retreat to a safe coordinate' do
+        before { opponent_pieces.first.update_position('D8') }
+
+        it 'should return nil' do
+          expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+        end
+      end
+    end
+
+    context 'when no chess piece is under attack' do
+      before { pawn_piece.update_position('D3') }
+
+      it 'should return nil' do
+        expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+      end
+    end
+
+    context "when the computers' pieces are empty" do
+      before { computer_pieces.clear }
+
+      it 'should return nil' do
+        expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+      end
+    end
+
+    context 'when opponent_pieces are empty' do
+      before { opponent_pieces.clear }
+
+      it 'should return nil' do
+        expect(computer.defensive_move(opponent_pieces)).to eq(nil)
+      end
+    end
+  end
+
