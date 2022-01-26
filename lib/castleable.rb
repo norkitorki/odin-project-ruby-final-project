@@ -1,6 +1,6 @@
 # frozen-string-literal: true
 
-# Castling moveset for chess king
+# chess castling functionality
 module Castleable
   def castleable?(player_pieces, opponent_pieces, rook_position)
     return false unless king?
