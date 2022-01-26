@@ -66,7 +66,7 @@ class Chess
   private
 
   def player_move(reverted)
-    clear && (piece = piece_input(reverted)) && clear || return
+    (clear && (piece = piece_input(reverted)) && clear) || return
     initial_position = piece.position
     destination = destination_input(piece) || return
     piece.update_position(destination)
