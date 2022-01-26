@@ -47,6 +47,7 @@ class Chess
     ChessPiece.setup_pieces(player1, WHITE_PIECES, :white)
     ChessPiece.setup_pieces(player2, BLACK_PIECES, :black)
     @active_player = player1
+    @previous_move = nil
     update_board(reset: true)
   end
 
