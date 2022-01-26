@@ -12,12 +12,12 @@ module Resumable
     delete_oldest_save if savegames.length >= MAX_SAVES_COUNT
     Dir.mkdir(SAVES_DIR) unless Dir.exist?(SAVES_DIR)
     savedata = YAML.dump({
-      active_player_name: active_player.name,
-      turn: turn,
-      player1: save_data(player1),
-      player2: save_data(player2),
-      chess_board: save_data(chess_board)
-    })
+                           active_player_name: active_player.name,
+                           turn: turn,
+                           player1: save_data(player1),
+                           player2: save_data(player2),
+                           chess_board: save_data(chess_board)
+                         })
     save_to_file(savedata)
   end
 
